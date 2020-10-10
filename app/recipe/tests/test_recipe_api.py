@@ -184,7 +184,7 @@ class PrivateRecipeApiTests(TestCase):
             'time_minutes': 25,
             'price': 5.00
         }
-        url=detail_url(recipe.id)
+        url = detail_url(recipe.id)
         self.client.put(url, payload)
 
         recipe.refresh_from_db()
@@ -192,4 +192,4 @@ class PrivateRecipeApiTests(TestCase):
         self.assertEqual(recipe.time_minutes, payload['time_minutes'])
         self.assertEqual(recipe.price, payload['price'])
         tags = recipe.tags.all()
-        self.assertEqual(len(tags), 1)
+        self.assertEqual(len(tags), 0)
